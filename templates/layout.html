@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}{% endblock %} - Uniteto</title>
+  </head>
+  <body>
+    <h1>Unit Converter</h1>
+    <nav>
+      <ul>
+        <li><a href="/length">Length</a></li>
+        <li><a href="/weight">Weight</a></li>
+        <li><a href="/temperature">Temperature</a></li>
+      </ul>
+    </nav>
+    {% block content %}{% endblock %}
+  </body>
+</html>
