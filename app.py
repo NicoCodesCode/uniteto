@@ -2,6 +2,7 @@ from flask import Flask, render_template, request
 
 from length_conversions import *
 from weight_conversions import *
+from temperature_conversions import *
 from utils import format_result
 
 app = Flask(__name__)
@@ -74,6 +75,25 @@ def weight():
         return render_template("weight.html", result=None)
 
 
-@app.route("/temperature")
+@app.route("/temperature", methods=["GET", "POST"])
 def temperature():
-    return render_template("temperature.html")
+    if request.method == "POST":
+        temperature = float(request.form["temperature"])
+        convert_from = request.form["convert-from"]
+        convert_to = request.form["convert-to"]
+        result = None
+
+        if convert_from == convert_to:
+            return render_template("temperature.html", result=temperature)
+
+        match convert_from:
+            case "fahrenheit":
+                result = format_result(convert_fahrenheit(temperature, convert_to))
+            case "celsius":
+                result = format_result(convert_celsius(temperature, convert_to))
+            case "kelvin":
+                result = format_result(convert_kelvin(temperature, convert_to))
+
+        return render_template("temperature.html", result=result)
+    else:
+        return render_template("temperature.html", result=None)
