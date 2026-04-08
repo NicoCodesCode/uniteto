@@ -39,8 +39,8 @@ def length():
                 result = format_result(convert_kilometer(length, convert_to))
 
         return render_template("length.html", result=result)
-    else:
-        return render_template("length.html", result=None)
+
+    return render_template("length.html", result=None)
 
 
 @app.route("/weight", methods=["GET", "POST"])
@@ -71,8 +71,8 @@ def weight():
                 result = format_result(convert_tonne(weight, convert_to))
 
         return render_template("weight.html", result=result)
-    else:
-        return render_template("weight.html", result=None)
+
+    return render_template("weight.html", result=None)
 
 
 @app.route("/temperature", methods=["GET", "POST"])
@@ -97,5 +97,5 @@ def temperature():
                 result = format_result(convert_kelvin(temperature, convert_to))
 
         return render_template("temperature.html", result=result)
-    else:
-        return render_template("temperature.html", result=None)
+
+    return render_template("temperature.html", result=None)
