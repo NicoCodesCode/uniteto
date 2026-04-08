@@ -16,25 +16,25 @@ def length():
         result = None
 
         if convert_from == convert_to:
-            result = length
-        else:
-            match convert_from:
-                case "inch":
-                    result = format_result(convert_inch(length, convert_to))
-                case "foot":
-                    result = format_result(convert_foot(length, convert_to))
-                case "yard":
-                    result = format_result(convert_yard(length, convert_to))
-                case "mile":
-                    result = format_result(convert_mile(length, convert_to))
-                case "millimeter":
-                    result = format_result(convert_millimeter(length, convert_to))
-                case "centimeter":
-                    result = format_result(convert_centimeter(length, convert_to))
-                case "meter":
-                    result = format_result(convert_meter(length, convert_to))
-                case "kilometer":
-                    result = format_result(convert_kilometer(length, convert_to))
+            return render_template("length.html", result=length)
+
+        match convert_from:
+            case "inch":
+                result = format_result(convert_inch(length, convert_to))
+            case "foot":
+                result = format_result(convert_foot(length, convert_to))
+            case "yard":
+                result = format_result(convert_yard(length, convert_to))
+            case "mile":
+                result = format_result(convert_mile(length, convert_to))
+            case "millimeter":
+                result = format_result(convert_millimeter(length, convert_to))
+            case "centimeter":
+                result = format_result(convert_centimeter(length, convert_to))
+            case "meter":
+                result = format_result(convert_meter(length, convert_to))
+            case "kilometer":
+                result = format_result(convert_kilometer(length, convert_to))
 
         return render_template("length.html", result=result)
     else:
