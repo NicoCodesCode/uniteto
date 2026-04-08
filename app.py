@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request
 
 from length_conversions import *
+from weight_conversions import *
 from utils import format_result
 
 app = Flask(__name__)
@@ -41,9 +42,36 @@ def length():
         return render_template("length.html", result=None)
 
 
-@app.route("/weight")
+@app.route("/weight", methods=["GET", "POST"])
 def weight():
-    return render_template("weight.html")
+    if request.method == "POST":
+        weight = float(request.form["weight"])
+        convert_from = request.form["convert-from"]
+        convert_to = request.form["convert-to"]
+        result = None
+
+        if convert_from == convert_to:
+            return render_template("weight.html", result=weight)
+
+        match convert_from:
+            case "ounce":
+                result = format_result(convert_ounce(weight, convert_to))
+            case "pound":
+                result = format_result(convert_pound(weight, convert_to))
+            case "us-ton":
+                result = format_result(convert_us_ton(weight, convert_to))
+            case "milligram":
+                result = format_result(convert_milligram(weight, convert_to))
+            case "gram":
+                result = format_result(convert_gram(weight, convert_to))
+            case "kilogram":
+                result = format_result(convert_kilogram(weight, convert_to))
+            case "tonne":
+                result = format_result(convert_tonne(weight, convert_to))
+
+        return render_template("weight.html", result=result)
+    else:
+        return render_template("weight.html", result=None)
 
 
 @app.route("/temperature")
