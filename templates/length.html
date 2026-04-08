@@ -3,5 +3,44 @@
 {% block title %} Length {% endblock %}
 
 {% block content %}
+
 <h2>Length Converter</h2>
+
+<form action="/length" method="POST">
+    <label for="length">Enter the length</label>
+    <input type="number" name="length" required>
+
+    <label for="convert-from">Convert from</label>
+    <select name="convert-from" id="convert-from" required>
+        <option value="">--Choose a unit--</option>
+        <option value="inch">Inch</option>
+        <option value="foot">Foot</option>
+        <option value="yard">Yard</option>
+        <option value="mile">Mile</option>
+        <option value="millimeter">Millimeter</option>
+        <option value="centimeter">Centimeter</option>
+        <option value="meter">Meter</option>
+        <option value="kilometer">Kilometer</option>
+    </select>
+
+    <label for="convert-to">Convert to</label>
+    <select name="convert-to" id="convert-to" required>
+        <option value="">--Choose a unit--</option>
+        <option value="inch">Inch</option>
+        <option value="foot">Foot</option>
+        <option value="yard">Yard</option>
+        <option value="mile">Mile</option>
+        <option value="millimeter">Millimeter</option>
+        <option value="centimeter">Centimeter</option>
+        <option value="meter">Meter</option>
+        <option value="kilometer">Kilometer</option>
+    </select>
+
+    <button type="submit">Convert :D</button>
+</form>
+
+{% if result is not none %}
+<p>Result: {{ result }}</p>
+{% endif %}
+
 {% endblock %}
