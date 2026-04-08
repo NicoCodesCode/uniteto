@@ -18,7 +18,7 @@ def length():
         result = None
 
         if convert_from == convert_to:
-            return render_template("length.html", result=length)
+            return render_template("length.html", result=format_result(length))
 
         match convert_from:
             case "inch":
@@ -52,7 +52,7 @@ def weight():
         result = None
 
         if convert_from == convert_to:
-            return render_template("weight.html", result=weight)
+            return render_template("weight.html", result=format_result(weight))
 
         match convert_from:
             case "ounce":
@@ -84,7 +84,9 @@ def temperature():
         result = None
 
         if convert_from == convert_to:
-            return render_template("temperature.html", result=temperature)
+            return render_template(
+                "temperature.html", result=format_result(temperature)
+            )
 
         match convert_from:
             case "fahrenheit":
