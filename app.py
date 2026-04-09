@@ -10,12 +10,12 @@ app = Flask(__name__)
 @app.route("/<unit>", methods=["GET", "POST"])
 def converter(unit):
     target_template = f"{unit}.html"
+    result = None
 
     if request.method == "POST":
         value = float(request.form[unit])
         convert_from = request.form["convert-from"]
         convert_to = request.form["convert-to"]
-        result = None
 
         if convert_from == convert_to:
             return render_template(
@@ -27,6 +27,4 @@ def converter(unit):
         ]
         result = format_result(conversion_function(value, convert_to))
 
-        return render_template(target_template, unit=unit, result=result)
-
-    return render_template(target_template, unit=unit, result=None)
+    return render_template(target_template, unit=unit, result=result)
