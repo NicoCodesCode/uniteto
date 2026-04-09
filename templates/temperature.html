@@ -2,34 +2,8 @@
 
 {% block title %} Temperature {% endblock %}
 
-{% block content %}
-
-<h2>Temperature Converter</h2>
-
-<form action="/temperature" method="POST" class="units-form">
-    <input type="number" name="temperature" placeholder="Enter the temperature..." class="unit-value-input" required>
-
-    <select name="convert-from" id="convert-from" class="select-unit-input" required>
-        <option value="">-- Convert From --</option>
-        <option value="fahrenheit">Fahrenheit</option>
-        <option value="celsius">Celsius</option>
-        <option value="kelvin">Kelvin</option>
-    </select>
-
-    <select name="convert-to" id="convert-to" class="select-unit-input" required>
-        <option value="">-- Convert To --</option>
-        <option value="fahrenheit">Fahrenheit</option>
-        <option value="celsius">Celsius</option>
-        <option value="kelvin">Kelvin</option>
-    </select>
-
-    <button type="submit" class="submit-button">Convert :D</button>
-</form>
-
-{% if result is not none %}
-<div class="result-container">
-    <p class="result">Result: {{ result }}&deg;</p>
-</div>
-{% endif %}
-
+{% block units %}
+<option value="fahrenheit">Fahrenheit</option>
+<option value="celsius">Celsius</option>
+<option value="kelvin">Kelvin</option>
 {% endblock %}

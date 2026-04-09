@@ -2,44 +2,13 @@
 
 {% block title %} Length {% endblock %}
 
-{% block content %}
-
-<h2>Length Converter</h2>
-
-<form action="/length" method="POST" class="units-form">
-    <input type="number" name="length" placeholder="Enter the length..." class="unit-value-input" required>
-
-    <select name="convert-from" id="convert-from" class="select-unit-input" required>
-        <option value="">-- Convert From --</option>
-        <option value="inch">Inch</option>
-        <option value="foot">Foot</option>
-        <option value="yard">Yard</option>
-        <option value="mile">Mile</option>
-        <option value="millimeter">Millimeter</option>
-        <option value="centimeter">Centimeter</option>
-        <option value="meter">Meter</option>
-        <option value="kilometer">Kilometer</option>
-    </select>
-
-    <select name="convert-to" id="convert-to" class="select-unit-input" required>
-        <option value="">-- Convert To --</option>
-        <option value="inch">Inch</option>
-        <option value="foot">Foot</option>
-        <option value="yard">Yard</option>
-        <option value="mile">Mile</option>
-        <option value="millimeter">Millimeter</option>
-        <option value="centimeter">Centimeter</option>
-        <option value="meter">Meter</option>
-        <option value="kilometer">Kilometer</option>
-    </select>
-
-    <button type="submit" class="submit-button">Convert :D</button>
-</form>
-
-{% if result is not none %}
-<div class="result-container">
-    <p class="result">Result: {{ result }}</p>
-</div>
-{% endif %}
-
+{% block units %}
+<option value="inch">Inch</option>
+<option value="foot">Foot</option>
+<option value="yard">Yard</option>
+<option value="mile">Mile</option>
+<option value="millimeter">Millimeter</option>
+<option value="centimeter">Centimeter</option>
+<option value="meter">Meter</option>
+<option value="kilometer">Kilometer</option>
 {% endblock %}

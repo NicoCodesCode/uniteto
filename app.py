@@ -11,6 +11,8 @@ app = Flask(__name__)
 @app.route("/")
 @app.route("/length", methods=["GET", "POST"])
 def length():
+    unit = "length"
+
     if request.method == "POST":
         length = float(request.form["length"])
         convert_from = request.form["convert-from"]
@@ -18,7 +20,9 @@ def length():
         result = None
 
         if convert_from == convert_to:
-            return render_template("length.html", result=format_result(length))
+            return render_template(
+                "length.html", unit=unit, result=format_result(length)
+            )
 
         match convert_from:
             case "inch":
@@ -38,13 +42,15 @@ def length():
             case "kilometer":
                 result = format_result(convert_kilometer(length, convert_to))
 
-        return render_template("length.html", result=result)
+        return render_template("length.html", unit=unit, result=result)
 
-    return render_template("length.html", result=None)
+    return render_template("length.html", unit=unit, result=None)
 
 
 @app.route("/weight", methods=["GET", "POST"])
 def weight():
+    unit = "weight"
+
     if request.method == "POST":
         weight = float(request.form["weight"])
         convert_from = request.form["convert-from"]
@@ -52,7 +58,9 @@ def weight():
         result = None
 
         if convert_from == convert_to:
-            return render_template("weight.html", result=format_result(weight))
+            return render_template(
+                "weight.html", unit=unit, result=format_result(weight)
+            )
 
         match convert_from:
             case "ounce":
@@ -70,13 +78,15 @@ def weight():
             case "tonne":
                 result = format_result(convert_tonne(weight, convert_to))
 
-        return render_template("weight.html", result=result)
+        return render_template("weight.html", unit=unit, result=result)
 
-    return render_template("weight.html", result=None)
+    return render_template("weight.html", unit=unit, result=None)
 
 
 @app.route("/temperature", methods=["GET", "POST"])
 def temperature():
+    unit = "temperature"
+
     if request.method == "POST":
         temperature = float(request.form["temperature"])
         convert_from = request.form["convert-from"]
@@ -85,7 +95,7 @@ def temperature():
 
         if convert_from == convert_to:
             return render_template(
-                "temperature.html", result=format_result(temperature)
+                "temperature.html", unit=unit, result=format_result(temperature)
             )
 
         match convert_from:
@@ -96,6 +106,6 @@ def temperature():
             case "kelvin":
                 result = format_result(convert_kelvin(temperature, convert_to))
 
-        return render_template("temperature.html", result=result)
+        return render_template("temperature.html", unit=unit, result=result)
 
-    return render_template("temperature.html", result=None)
+    return render_template("temperature.html", unit=unit, result=None)
