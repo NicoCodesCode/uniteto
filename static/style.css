@@ -1,0 +1,138 @@
+:root {
+  --dark-background: #2b303a;
+  --light-background: #eee5e9;
+  --emphasis: #a4508b;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--dark-background);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  min-height: 100vh;
+  display: grid;
+  place-content: center;
+  padding: 1.5rem;
+}
+
+main {
+  background-color: var(--light-background);
+  color: var(--dark-background);
+  width: min(715px, 100%);
+  min-height: 615px;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 12px 12px var(--emphasis);
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+h1 {
+  text-align: center;
+}
+
+a {
+  color: var(--light-background);
+  text-decoration: none;
+}
+
+.links {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.page-link {
+  list-style: none;
+  background-color: var(--emphasis);
+  width: 150px;
+  text-align: center;
+  font-weight: bold;
+  border-radius: 12px;
+  padding: 0.4rem 0;
+}
+
+.units-form {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+}
+
+.submit-button {
+  grid-column: 2;
+  cursor: pointer;
+}
+
+.result-container {
+  display: grid;
+  place-content: center;
+  height: 100%;
+}
+
+.result {
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+.unit-value-input,
+.select-unit-input,
+.submit-button {
+  background-color: var(--dark-background);
+  color: var(--light-background);
+  padding: 0.5rem;
+  border-radius: 12px;
+  outline: 0 none;
+}
+
+/* Tablet */
+@media (max-width: 600px) {
+  main {
+    padding: 1.5rem;
+    gap: 1.5rem;
+    box-shadow: 8px 8px var(--emphasis);
+  }
+
+  .units-form {
+    grid-template-columns: 1fr;
+    grid-gap: 12px;
+  }
+
+  .submit-button {
+    grid-column: 1;
+  }
+
+  .result {
+    font-size: 1.4rem;
+  }
+}
+
+/* Mobile */
+@media (max-width: 400px) {
+  body {
+    padding: 1rem;
+  }
+
+  main {
+    padding: 1.25rem;
+  }
+
+  h1 {
+    font-size: 1.2rem;
+  }
+
+  .page-link {
+    width: 130px;
+    font-size: 0.9rem;
+  }
+
+  .result {
+    font-size: 1.2rem;
+  }
+}

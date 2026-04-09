@@ -6,13 +6,11 @@
 
 <h2>Weight Converter</h2>
 
-<form action="/weight" method="POST">
-    <label for="weight">Enter the weight</label>
-    <input type="number" name="weight" required>
+<form action="/weight" method="POST" class="units-form">
+    <input type="number" name="weight" placeholder="Enter the weight..." class="unit-value-input" required>
 
-    <label for="convert-from">Convert from</label>
-    <select name="convert-from" id="convert-from" required>
-        <option value="">--Choose a unit--</option>
+    <select name="convert-from" id="convert-from" class="select-unit-input" required>
+        <option value="">-- Convert From --</option>
         <option value="ounce">Ounce</option>
         <option value="pound">Pound</option>
         <option value="us-ton">US Ton</option>
@@ -22,9 +20,8 @@
         <option value="tonne">Tonne</option>
     </select>
 
-    <label for="convert-to">Convert to</label>
-    <select name="convert-to" id="convert-to" required>
-        <option value="">--Choose a unit--</option>
+    <select name="convert-to" id="convert-to" class="select-unit-input" required>
+        <option value="">-- Convert To --</option>
         <option value="ounce">Ounce</option>
         <option value="pound">Pound</option>
         <option value="us-ton">US Ton</option>
@@ -34,11 +31,13 @@
         <option value="tonne">Tonne</option>
     </select>
 
-    <button type="submit">Convert :D</button>
+    <button type="submit" class="submit-button">Convert :D</button>
 </form>
 
 {% if result is not none %}
-<p>Result: {{ result }}</p>
+<div class="result-container">
+    <p class="result">Result: {{ result }}</p>
+</div>
 {% endif %}
 
 {% endblock %}
