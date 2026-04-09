@@ -1,48 +1,65 @@
 <!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}{% endblock %} - Uniteto</title>
+    <link rel="stylesheet" href="../static/style.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>{% block title %}{% endblock %} - Uniteto</title>
-  <link rel="stylesheet" href="../static/style.css">
-</head>
-
-<body>
-  <main>
-    <h1>Unit Converter</h1>
-    <nav>
-      <ul class="links">
-        <a href="/length">
-          <li class="page-link">Length</li>
-        </a>
-        <a href="/weight">
-          <li class="page-link">Weight</li>
-        </a>
-        <a href="/temperature">
-          <li class="page-link">Temperature</li>
-        </a>
-      </ul>
-    </nav>
-    <h2>{{ unit.capitalize() }} Converter</h2>
-    <form action="/{{ unit }}" method="POST" class="units-form">
-      <input type="number" name="{{ unit }}" placeholder="Enter the {{ unit }}..." class="unit-value-input" required>
-      <select name="convert-from" id="convert-from" class="select-unit-input" required>
-        <option value="">-- Convert From --</option>
-        {% block units %}{% endblock %}
-      </select>
-      <select name="convert-to" id="convert-to" class="select-unit-input" required>
-        <option value="">-- Convert To --</option>
-        {{ self.units() }}
-      </select>
-      <button type="submit" class="submit-button">Convert :D</button>
-    </form>
-    {% if result is not none %}
-    <div class="result-container">
-      <p class="result">Result: {{ result }}</p>
-    </div>
-    {% endif %}
-  </main>
-</body>
-
+  <body>
+    <main>
+      <h1>Unit Converter</h1>
+      <nav>
+        <ul class="links">
+          <a href="/length">
+            <li class="page-link">Length</li>
+          </a>
+          <a href="/weight">
+            <li class="page-link">Weight</li>
+          </a>
+          <a href="/temperature">
+            <li class="page-link">Temperature</li>
+          </a>
+        </ul>
+      </nav>
+      <h2>{{ unit.capitalize() }} Converter</h2>
+      <form action="/{{ unit }}" method="POST" class="units-form">
+        <input
+          type="number"
+          name="{{ unit }}"
+          placeholder="Enter the {{ unit }}..."
+          class="unit-value-input"
+          value="{{ value or None }}"
+          required
+        />
+        <select
+          name="convert-from"
+          id="convert-from"
+          class="select-unit-input"
+          value="{{ convert_from or None }}"
+          required
+        >
+          <option value="">-- Convert From --</option>
+          {% block units %}{% endblock %}
+        </select>
+        <select
+          name="convert-to"
+          id="convert-to"
+          class="select-unit-input"
+          value="{{ convert_to or None }}"
+          required
+        >
+          <option value="">-- Convert To --</option>
+          {{ self.units() }}
+        </select>
+        <button type="submit" class="submit-button">Convert :D</button>
+      </form>
+      {% if result %}
+      <div class="result-container">
+        <p class="result">Result: {{ result }}</p>
+      </div>
+      {% endif %}
+    </main>
+  </body>
 </html>
