@@ -55,7 +55,12 @@
       </form>
       {% if result %}
       <div class="result-container">
-        <p class="result">Result: {{ result }}</p>
+        <p class="result">
+          {{ value }}{% if unit == "temperature" %}&deg;{% endif %} 
+          {{ convert_from.capitalize() }}{{ "s" if value | float > 1.0 and unit != "temperature" }}
+          &equals; {{ result }}{% if unit == "temperature" %}&deg;{% endif %} 
+          {{ convert_to.capitalize() }}{{ "s" if unit != "temperature" }}
+        </p>
       </div>
       {% endif %}
     </main>
