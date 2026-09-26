@@ -22,7 +22,12 @@ def converter(unit):
 
         if convert_from == convert_to:
             return render_template(
-                target_template, unit=unit, result=format_result(value)
+                target_template,
+                unit=unit,
+                result=format_result(value),
+                value=value,
+                convert_from=convert_from,
+                convert_to=convert_to,
             )
 
         conversion_function = conversion_functions[
