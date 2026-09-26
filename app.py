@@ -12,7 +12,11 @@ def converter(unit):
     target_template = f"{unit}.html"
 
     if request.method == "POST":
-        value = float(request.form[unit])
+        try:
+            value = float(request.form[unit])
+        except ValueError:
+            return render_template(target_template, unit=unit, error="Invalid value")
+
         convert_from = request.form["convert-from"]
         convert_to = request.form["convert-to"]
 

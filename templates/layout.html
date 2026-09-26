@@ -30,7 +30,7 @@
           name="{{ unit }}"
           placeholder="Enter the {{ unit }}..."
           class="unit-value-input"
-          value="{{ value or None }}"
+          value="{{ value or '' }}"
           required
         />
         <select
@@ -53,6 +53,11 @@
         </select>
         <button type="submit" class="submit-button">Convert :D</button>
       </form>
+      {% if error %}
+      <div class="error-container">
+        <p class="error">{{ error }}</p>
+      </div>
+{% endif %}
       {% if result %}
       <div class="result-container">
         <p class="result">
